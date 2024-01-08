@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment no 2</title>
+</head>
+
+<body>
+
+    <script>
+        /*Quiz no -1 ---Rewrite the following code using a ternary operator:
+            let result;
+            if (score >= 80) {
+                result = "Pass";
+            } else {
+                result = "Fail";
+            }*/
+        let marks = 90;
+        let result = marks >= 75 ? "pass" : "fail";
+        console.log(result);
+
+        //Quiz no -2 --- How does the optional chaining operator (?.) work, and how can it be used to access nested properties of an object?
+        const biryani = {
+            title: "chicken biryani",
+            itemList: {
+                vegetable_1: "tomato",
+                vegetable_2: "potato",
+                vegetable_3: "onion",
+            }
+        };
+        const item = biryani?.itemList?.vegetable_2;
+        console.log(item);
+
+        //Quiz no -3 ---Compare the for...in loop and the for...of loop in terms of their use cases and the types of values they iterate over.
+        let pen = {
+            color: "blue",
+            brand: "dolor",
+            price: "$25"
+        }
+        for (let obj in pen) {
+            console.log(obj, ":", pen[obj]);
+        }
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        for (let numbers of arr) {
+            console.log(numbers);
+        }
+
+        //Quiz no -4 --- Define a function calculateAverage that takes an array of numbers as an argument and returns the average value.
+        function calculateAverage(array) {
+            const sum = array.reduce((acc, curr) => acc + curr, 0);
+            const average = sum / array.length;
+            return average;
+        }
+
+        const array = [1, 2, 3, 4, 5, 6, 7];
+        const average = calculateAverage(array);
+        console.log(average);
+
+        //Quiz no -5 ---Explain the concept of "closures" in JavaScript and provide an example of their practical use.
+        function multFn() {
+            var mult = 9;
+            return function (val) {
+                mult = mult * val;
+                return mult;
+            }
+        }
+        var mult = multFn();
+        console.log(mult(5));
+
+        //Quiz no -6 ---Create an object named student with properties name, age, and grades. Add a method calculateAverage that calculates the average of the grades.
+        const student = {
+            name: "Mahrukh",
+            age: 22,
+            grade: {
+                math: 75,
+                science: 85,
+                English: 85,
+                programming: 90,
+            },
+            get gradeAvg() {
+                let total = 0;
+                for (let value in this.grade) {
+                    total += this.grade[value]
+                }
+                return total / Object.entries(this.grade).length;
+            }
+        }
+        console.log(student);
+
+        //Quiz no -7 ---How can you clone an object in JavaScript and also give one example each deep copy, shallow copy, and reference copy..
+
+        //Deep copy example--
+        const person = {
+            name: "Mahnoor",
+            age: 22,
+        }
+        const secondPerson = { ...person };
+        secondPerson.age = 24;
+        console.log(person.age); // output: 24
+        console.log(secondPerson.age); // output: 25
+        //Shalow copy example---
+        const first_person = {
+            name: "Mahrukh",
+            age: 21,
+        }
+        const second_person = first_person;
+        second_person.age = 22;
+        console.log(first_person.age);// output: 22
+        console.log(second_person.age);// output: 22
+        //Reference copy example---
+        const actualPerson = {
+            name: "maria",
+            age: 23,
+            city: "karachi",
+        }
+        const referencePerson = actualPerson;
+        console.log(referencePerson);
+
+        //Quiz no -8 ---Write a loop that iterates over an array of numbers and logs whether each number is even or odd, using a ternary operator.
+        let arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        for (i = 0; i <= arr2.length; i++) {
+            let num = i % 2 ? "Odd" : "Even";
+            console.log("the Number " + i + " is " + num);
+        }
+
+        //Quiz no -9 ---Describe the differences between the for loop, while loop, and do...while loop in JavaScript. When might you use each.
+        //while loop--
+        let w = 10;
+        while (w >= 1) {
+            console.log(w);
+            w--;
+        }
+        //do-while loop--
+        let d = 1;
+        let add = 2;
+        do {
+            add += d;
+            d++;
+        } while (d <= 8);
+        console.log("the number is", add);
+        //for loop---
+        for (let i = 0; i <= 10; i++) {
+            console.log(i);
+        }
+
+        //Quiz no -10 --- Provide an example of using optional chaining within a loop to access a potentially missing property of an object.
+        const personInfo = {
+            name: 'mahrukh',
+            age: 20,
+            car: {
+                make: 'Toyota',
+                model: 'Camry',
+                getInfo: function () {
+                    return `${this.make} ${this.model}`;
+                }
+            }
+        };
+        const carInfo = personInfo?.car?.getInfo();
+        console.log(carInfo); // "Toyota Camry"
+
+        //Quiz no -11 ---Write a for...in loop that iterates over the properties of an object and logs each property name and value.
+        const object = {
+            a: 1,
+            b: 2,
+            c: 3
+        };
+        for (const value in object) {
+            console.log(`${value}: ${object[value]}`);
+        }
+
+        //Quiz no -12 ---Explain the use of the break and continue statements within loops. Provide scenarios where each might be used.
+        //continue statement..
+        let content = "";
+        for (i = 1; i < 7; i++) {
+            if (i === 4) {
+                continue;
+            }
+            content += "continue statement Num " + i + "\n";
+        }
+        console.log(content);
+        //break statement..
+        let content2 = "";
+        for (i = 1; i < 1000; i++) {
+            if (i === 6) {
+                break;
+            }
+            content2 += "break statement Num " + i + "\n"
+        }
+        console.log(content2);
+
+        //Quiz no -13 ---Write a function calculateTax that calculates and returns the tax amount based on a given income. Use a ternary operator to determine the tax rate.
+        function calculateTax(income) {
+            const taxRate = income > 50000 ? 0.2 : income > 20000 ? 0.15 : 0.1;
+            const taxAmount = income * taxRate;
+            return taxAmount;
+        }
+        const income1 = 35000;
+        const tax1 = calculateTax(income1);
+        console.log(`Tax for income $${income1} : $${tax1}`);
+
+        //Quiz no -14 --- Create an object car with properties make, model, and a method startEngine that logs a message. Instantiate the object and call the method.
+        const car = {
+            make: "toyota",
+            model: "cemry",
+            startEngine: function () {
+                console.log("Engine Started! be careful");
+            }
+        };
+        car.startEngine();
+
+        //Quiz no -15 --- Explain the differences between regular functions and arrow functions in terms of scope, this binding, and their use as methods.
+        //Arrow function..
+        var square = (x) => {
+            return (x * x);
+        };
+        console.log(square(9));//simple use
+
+        //Regular function..
+        let squareIs = function (x) {
+            return (x * x);
+        };
+        console.log(squareIs(9));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
